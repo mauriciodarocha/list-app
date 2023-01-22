@@ -1,10 +1,14 @@
-import { useState } from "./app-controls/AppControls";
+import { render } from "./app-controls/AppControls";
 import { Header } from "./components/header/Header";
 import { Form } from "./components/form/Form";
 import { List } from "./components/list/List";
 
 const App = () => {
-  const [itemList,setItemList] = useState([])
+  let itemList = []
+  const setItemList = (newList) => {
+    itemList = newList
+    render(List,{itemList,className:"list",remove},listContainer)
+  }
   const app = document.createElement("div");
     app.className = "App";
     
@@ -22,11 +26,11 @@ const App = () => {
     add(itemObj)
   }
 
-  const list = List({itemList,className:"list",remove})
+  const listContainer = document.createElement('div')
   const form = Form({onSubmit,className:'list-form'})
 
     app.append(header)
-    app.append(list)
+    app.append(listContainer)
     app.append(form)
 
   return app

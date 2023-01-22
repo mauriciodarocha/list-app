@@ -10,14 +10,11 @@ export const Form = ({onSubmit, className}) => {
       e.preventDefault()
       let text = input.value.trim()
       onSubmit({text,id:uuidv4()},input)
+      form.reset()
   })
 
   form.append(label)
   form.append(input)
-  
-  setTimeout(() => {
-      input.focus()        
-  }, 0);
 
   return form
 }
