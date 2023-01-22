@@ -19,6 +19,9 @@ const ListItem = ({item,remove}) => {
   const span = document.createElement('span')
   const checkbox = document.createElement('input')
     checkbox.type = 'checkbox'
+  if (item['checked']) {
+    checkbox.setAttribute('checked', 'checked')
+  }
   const btn = document.createElement('button')
     btn.innerHTML = "X"
     span.append(item.text)
@@ -29,10 +32,10 @@ const ListItem = ({item,remove}) => {
       remove(item)
     })
     checkbox.addEventListener('change', (e) => {
-      if(e.target.getAttribute('checked')){
-        e.target.setAttribute('checked')
+      if(!item['checked']) {
+        item['checked'] = true
       } else {
-        e.target.removeAttribute('checked')
+        item['checked'] = false
       }
     })
   return itemEl
