@@ -9,7 +9,9 @@ export const Form = ({onSubmit, className}) => {
   form.addEventListener('submit', (e)=>{
       e.preventDefault()
       let text = input.value.trim()
-      onSubmit({text,id:uuidv4()},input)
+      if(text) {
+        onSubmit({text,id:uuidv4()},input)
+      }
       form.reset()
   })
 
