@@ -2,7 +2,11 @@ export const Form = ({onSubmit, className}) => {
   const form = document.createElement('form')
   const label = document.createElement('label')
   const input = document.createElement('input')
-  label.innerText = "new item"
+  const button = document.createElement('button')
+    button.textContent = 'Submit'
+  const div = document.createElement('div')
+    div.classList.add('list-input')
+  label.innerText = "New item"
   if (className) {
     form.classList.add(className)
   }
@@ -15,8 +19,10 @@ export const Form = ({onSubmit, className}) => {
       form.reset()
   })
 
-  form.append(label)
-  form.append(input)
+  div.append(label)
+  div.append(input)
+  div.append(button)
+  form.append(div)
 
   return form
 }

@@ -5,8 +5,16 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: #242424;
-  background-color:  rgba(192, 199, 255, 0.87);
+
+  /* --light:#768948; */
+  --lightest:#ebd896;
+  --light:#a6b67f;
+  --medium:#607744;
+  --dark:#34623f;
+  --darkest:#1e2f23;
+
+  color: var(--darkest);
+  background-color:  var(--lightest);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -17,17 +25,153 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: var(--darkest);
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  color: var(--dark);
+}
+button {
+  cursor: pointer;
 }
 
 body {
   margin: 0;
 }
 
-input:checked + span {
+.App {
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+header {
+  font-size: 1.4rem;
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  background-color: var(--dark);
+  color: var(--lightest);
+  z-index: 2;
+}
+
+.list-container {
+  min-height: calc(100vh - 44px - 56px);
+  position: relative;
+  z-index: 1;
+}
+
+.list-container ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 0;
+}
+
+.list-container ul li label {
+  cursor: pointer;
+  display: flex;
+  padding: 6px 10px;
+  border: 0.5px dotted var(--light);
+  border-width: 0 0 1px 0;
+}
+
+.list-container ul li:hover label {
+  background-color: var(--light);
+}
+
+.list-container ul li.checked .span-text {
+  opacity: 0.7;
+}
+
+.list-container ul li .span-text {
+  flex-grow: 1;
+}
+
+.list-container .span-btn {
+  order: 2;
+  background-color: var(--light);
+  width: 24px;
+  border-radius: 100%;
+  margin-left: 6px;
+  position: relative;
+}
+
+.list-container li:hover .span-btn {
+  background-color: var(--darkest);
+}
+
+.list-container .span-btn input {
+  opacity: 0;
+  height: 0;
+  width: 0;
+}
+
+.list-container .checked .span-btn::before {
+  content: "";
+  width: 14px;
+  height: 16px;
+  transform-origin: bottom left;
+  clip-path: polygon(18% 23%, 3% 38%, 40% 96%, 96% 23%, 86% 2%, 41% 63%);
+  clip-path: polygon(21% 38%, 13% 59%, 43% 97%, 96% 23%, 86% 2%, 40% 67%);
+  background-color: var(--medium);
+  display: block;
+  position: absolute;
+  left: 5px;
+  top: 4px;
+}
+
+.list-container li.checked:hover .span-btn::before {
+  background-color: var(--lightest);
+}
+
+.list-container .checked .span-text {
   text-decoration: line-through;
+}
+
+.list-container button {
+  width: 24px;
+  border-radius: 100%;
+  border: 0;
+  background-color: var(--light);
+  color: var(--darkest);
+}
+
+.list-container li:hover button {
+  background-color: var(--darkest);
+  color: var(--lightest);
+}
+
+form {
+  padding: 10px 20px;
+  position: sticky;
+  bottom: 0;
+  background-color: var(--medium);
+  z-index: 3;
+}
+
+form .list-input {
+  display: flex;
+}
+
+form label {
+  font-size: 0.7rem;
+  line-height: 1rem;
+  display: block;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background-color: var(--darkest);
+  color: var(--lightest);
+  padding: 0px 4px;
+}
+
+form input {
+  padding: 10px 10px;
+  border: 0;
+  flex-grow: 1;
+}
+
+form button {
+  border: 0;
+  background-color: var(--darkest);
+  color: var(--lightest);
 }
