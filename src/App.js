@@ -26,8 +26,9 @@ const App = () => {
     add(itemObj)
   }
 
-  const listContainer = document.createElement('div')
   const form = Form({onSubmit,className:'list-form'})
+  const listContainer = document.createElement('div')
+    listContainer.classList.add('list-container')
 
     app.append(header)
     app.append(listContainer)
